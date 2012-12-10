@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
+<head>
+<title>Debug Console</title>
+<style type="text/css">
+
+div, body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+#debug-console{
+  font-family: Verdana, Helvetica, sans-serif;
+}
+#debug-console h1{
+  font-weight: bold;
+  font-size: 14px;
+}
+#debug-console #tools{
+  font-size: 10px;
+  background-color: #aaccff;
+  padding: 3px;
+  border-bottom: 1px solid #88aacc;
+}
+#debug-console #log-output{
+  overflow: auto;
+  font-size: 10px;
+  padding: 3px;
+}
+
+</style>
+<script type="text/javascript">
+var rand_id = null;
+function clear(){
+  var log = document.getElementById(rand_id);
+
+  while (log.childNodes.length>0){
+        log.removeChild(log.childNodes[0]);
+  }
+
+}
+function adjustSize(){
+
+  winH = document.documentElement.clientHeight;
+
+  var header = document.getElementById('header');
+  var log = document.getElementById(rand_id);
+
+  log.style.height = ""+(winH-header.offsetHeight-20)+"px";
+}
+function urlParam( name ){
+  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var results = regex.exec( window.location.href );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+function go(){
+  rand_id = "log-output" + urlParam('id');
+  var log = document.getElementById('log-output');
+  log.id = rand_id;
+  adjustSize();
+}
+</script>
+</head>
+<body id="debug-console" onLoad="go();" onResize="adjustSize();">
+<div id="header">
+  <h1>Debug Console</h1>
+  <div id=tools><a href="javascript:clear();">clear</a></div>
+</div>
+<div id="log-output"></div>
+</body>
+</html>

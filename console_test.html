@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<title>console test</title>
+<style type="text/css">
+</style>
+<script type="text/javascript" src='console.js'></script>
+<script type="text/javascript">
+var count1 = 0;
+var count2 = 0;
+console_launch();
+var timer1 = setInterval(
+  function(){
+    console_write("timer: "+count1);
+    count1++;
+    if (count1>10){
+       clearInterval(timer1);
+    }
+  },
+  10);
+
+var timer2 = null;
+function go(){ return;
+  timer2 = setInterval(
+  function(){
+    console_write("timer2: "+count2);
+    count2++;
+    if (count2>10){
+       clearInterval(timer2);
+    }
+  },
+  10);
+}
+</script>   
+</head>
+<body onload='go()'>
+
+</body>  
+</html>
