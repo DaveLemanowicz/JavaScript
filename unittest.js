@@ -136,7 +136,6 @@ test( "Test array values", function() {
   p.putArray('my_num_array',my_num_array);
   p.putArray('my_str_array',my_str_array);
   p.putArray('my_mixed_array',my_mixed_array);
-  console_write("saving mixed array");
   p.save();
   
   var p2 = new ClientSideStorage(random_str);

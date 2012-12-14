@@ -128,13 +128,10 @@ function ClientSideStorage(storageName){
   // getArray
   //-------------------------------------------------------
   this.getArray = function(name){
-    console_write("getArray: "+name);
-
     var a = storage[name+"*"];
     if (typeof a != 'undefined'){
        for (var i=0; i<a.length; i++){
            var v = a[i];
-           console_write("elem: "+(v===null?'^':v));
        }
     }
     return storage[name+"*"];
@@ -182,7 +179,6 @@ function ClientSideStorage(storageName){
            }
         }
     }
-    console_write("result: "+result);
     createCookie(theName,result,days);
   }
   //-------------------------------------------------------
